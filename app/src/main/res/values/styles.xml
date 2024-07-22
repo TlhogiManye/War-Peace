@@ -1,0 +1,9 @@
+<resources>
+    <!-- Base application theme -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here -->
+        <item name="colorPrimary">@color/primaryColor</item> <!-- Set the primary color -->
+        <item name="colorPrimaryDark">@color/primaryColor</item> <!-- Set the color for the status bar -->
+        <item name="colorAccent">@color/accentColor</item> <!-- Set the accent color -->
+    </style>
+</resources>

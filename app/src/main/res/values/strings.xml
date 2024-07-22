@@ -1,3 +1,16 @@
 <resources>
     <string name="app_name">war-peace</string>
+    <!-- Title Text -->
+    <string name="title_text">Word Frequency</string>
+
+    <!-- URL Input Hint -->
+    <string name="url_hint">Enter URL</string>
+
+    <!-- Analyze URL Button -->
+    <string name="analyze_url_button">Analyze URL</string>
+
+    <!-- Select File Button -->
+    <string name="select_file_button">Select File</string>
+
+    <string name="description_text">Please enter the URL of the text file you would like to analyze, alternatively please select a file from your phone.</string>
 </resources>

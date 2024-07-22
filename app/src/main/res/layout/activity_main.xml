@@ -11,49 +11,60 @@
         android:id="@+id/titleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="URL Analyzer"
+        android:text="@string/title_text"
         android:textSize="24sp"
         android:textColor="@color/primaryColor"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:layout_alignParentTop="true"
         android:textStyle="bold" />
+
+    <!-- Description TextView -->
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/description_text"
+        android:textSize="16sp"
+        android:textColor="@color/textColor"
+        android:layout_below="@id/titleText"
+        android:layout_marginBottom="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_centerHorizontal="true" />
 
     <!-- URL Input Field -->
     <EditText
         android:id="@+id/urlInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Enter URL"
+        android:hint="@string/url_hint"
         android:inputType="textUri"
         android:background="@drawable/edit_text_background"
         android:padding="16dp"
-        android:layout_below="@id/titleText"
+        android:layout_below="@id/descriptionText"
         android:layout_marginBottom="16dp" />
 
     <!-- Analyze URL Button -->
     <Button
         android:id="@+id/urlAnalyzeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Analyze URL"
-        android:backgroundTint="@color/primaryColor"
+        android:text="@string/analyze_url_button"
+        android:backgroundTint="@color/secondaryColor"
         android:textColor="@android:color/white"
         android:layout_below="@id/urlInput"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:padding="12dp" />
 
     <!-- Select File Button -->
     <Button
         android:id="@+id/analyzeButton"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Select File"
-        android:backgroundTint="@color/primaryColor"
+        android:text="@string/select_file_button"
+        android:backgroundTint="@color/secondaryColor"
         android:textColor="@android:color/white"
         android:layout_below="@id/urlAnalyzeButton"
-        android:layout_centerHorizontal="true"
         android:layout_marginBottom="16dp"
         android:padding="12dp" />
 
