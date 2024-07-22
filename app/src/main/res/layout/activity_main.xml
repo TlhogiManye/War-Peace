@@ -3,44 +3,71 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     tools:context=".view.MainActivity">
 
+    <!-- Title TextView -->
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="URL Analyzer"
+        android:textSize="24sp"
+        android:textColor="@color/primaryColor"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="24dp"
+        android:layout_alignParentTop="true"
+        android:textStyle="bold" />
+
+    <!-- URL Input Field -->
     <EditText
         android:id="@+id/urlInput"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Enter URL"
-        android:layout_margin="16dp"
-        android:inputType="textUri" />
+        android:inputType="textUri"
+        android:background="@drawable/edit_text_background"
+        android:padding="16dp"
+        android:layout_below="@id/titleText"
+        android:layout_marginBottom="16dp" />
 
+    <!-- Analyze URL Button -->
     <Button
         android:id="@+id/urlAnalyzeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Analyze URL"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@android:color/white"
         android:layout_below="@id/urlInput"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp" />
 
+    <!-- Select File Button -->
     <Button
         android:id="@+id/analyzeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Select File"
+        android:backgroundTint="@color/primaryColor"
+        android:textColor="@android:color/white"
         android:layout_below="@id/urlAnalyzeButton"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:padding="12dp" />
 
+    <!-- Result TextView -->
     <TextView
         android:id="@+id/resultView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/analyzeButton"
-        android:layout_margin="16dp"
-        android:textSize="16sp" />
+        android:layout_marginTop="16dp"
+        android:textSize="16sp"
+        android:textColor="@color/secondaryColor" />
 
+    <!-- ProgressBar -->
     <ProgressBar
         android:id="@+id/progressBar"
         android:layout_width="wrap_content"
