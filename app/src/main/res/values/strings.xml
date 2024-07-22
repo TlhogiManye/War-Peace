@@ -13,4 +13,6 @@
     <string name="select_file_button">Select File</string>
 
     <string name="description_text">Please enter the URL of the text file you would like to analyze, alternatively please select a file from your phone.</string>
+    <string name="logo_description">App Logo</string>
+
 </resources>
