@@ -19,16 +19,8 @@ Highest scoring word(s) (according to the score table): {word} with a score of {
 1. Clone the repository:
    ```bash
    git clone https://github.com/yourusername/war-peace-analyzer.git
-2. Open the project in your IDE and build it.
+2.  Open the project in your IDE and build it.
 
-3. Run tests to ensure everything is working:
-    ```bash
-    ./gradlew test
-   
+3. To use the application, integrate the BookAnalyzer and MainController classes as needed.
 
-4. To use the application, integrate the BookAnalyzer and MainController classes as needed.
-
-5. Testing
-    Unit tests are provided for the BookAnalyzer class. Ensure all dependencies are correctly resolved to run the tests.
-
-
+4. Testing: Unit tests are provided for the BookAnalyzer class. Ensure all dependencies are correctly resolved to run the tests.
