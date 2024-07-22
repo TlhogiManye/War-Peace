@@ -15,24 +15,24 @@
         <ImageView
             android:id="@+id/logoImage"
             android:layout_width="100dp"
-            android:layout_height="100dp"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/logo_description"
-            android:src="@drawable/logo" />
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginBottom="16dp"
+        android:src="@drawable/logo"
+        android:contentDescription="@string/logo_description" />
 
         <!-- Title TextView -->
         <TextView
             android:id="@+id/titleText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/logoImage"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="8dp"
             android:text="@string/title_text"
-            android:textColor="@color/primaryColor"
             android:textSize="24sp"
+            android:textColor="@color/primaryColor"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/logoImage"
+            android:layout_marginBottom="8dp"
             android:textStyle="bold" />
 
         <!-- Description TextView -->
@@ -40,49 +40,49 @@
             android:id="@+id/descriptionText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/titleText"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="16dp"
             android:text="@string/description_text"
+            android:textSize="16sp"
             android:textColor="@color/textColor"
-            android:textSize="16sp" />
+            android:layout_below="@id/titleText"
+            android:layout_marginBottom="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_centerHorizontal="true" />
 
         <!-- URL Input Field -->
         <EditText
             android:id="@+id/urlInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/descriptionText"
-            android:layout_marginBottom="16dp"
-            android:background="@drawable/edit_text_background"
             android:hint="@string/url_hint"
             android:inputType="textUri"
-            android:padding="16dp" />
+            android:background="@drawable/edit_text_background"
+            android:padding="16dp"
+            android:layout_below="@id/descriptionText"
+            android:layout_marginBottom="16dp" />
 
         <!-- Analyze URL Button -->
         <Button
             android:id="@+id/urlAnalyzeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/analyze_url_button"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@android:color/white"
             android:layout_below="@id/urlInput"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/secondaryColor"
-            android:padding="12dp"
-            android:text="@string/analyze_url_button"
-            android:textColor="@android:color/white" />
+            android:padding="12dp" />
 
         <!-- Select File Button -->
         <Button
             android:id="@+id/analyzeButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:text="@string/select_file_button"
+            android:backgroundTint="@color/secondaryColor"
+            android:textColor="@android:color/white"
             android:layout_below="@id/urlAnalyzeButton"
             android:layout_marginBottom="16dp"
-            android:backgroundTint="@color/secondaryColor"
-            android:padding="12dp"
-            android:text="@string/select_file_button"
-            android:textColor="@android:color/white" />
+            android:padding="12dp" />
 
         <!-- Result TextView -->
         <TextView
@@ -91,8 +91,8 @@
             android:layout_height="wrap_content"
             android:layout_below="@id/analyzeButton"
             android:layout_marginTop="16dp"
-            android:textColor="@color/secondaryColor"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+            android:textColor="@color/secondaryColor" />
 
         <!-- ProgressBar -->
         <ProgressBar
