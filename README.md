@@ -24,6 +24,7 @@ Highest scoring word(s) (according to the score table): {word} with a score of {
 3. Run tests to ensure everything is working:
     ```bash
     ./gradlew test
+   
 
 4. To use the application, integrate the BookAnalyzer and MainController classes as needed.
 
