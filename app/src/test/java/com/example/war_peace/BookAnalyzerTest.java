@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 import com.example.war_peace.controllers.BookAnalyzer;
 
+
 public class BookAnalyzerTest {
 
     private BookAnalyzer bookAnalyzer;

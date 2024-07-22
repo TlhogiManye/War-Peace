@@ -23,15 +23,12 @@ public class BookAnalyzer {
      * @throws IOException if an I/O error occurs
      */
     public void analyzeFile(String filePath) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
-        String line;
-        while ((line = reader.readLine()) != null) {
-            String[] words = line.toLowerCase().replaceAll("[^a-zA-Z ]", "").split("\\s+");
-            for (String word : words) {
-                wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
+        try (BufferedReader reader = new BufferedReader(new FileReader(filePath))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                analyzeText(line);
             }
         }
-        reader.close();
     }
 
     /**
@@ -40,10 +37,10 @@ public class BookAnalyzer {
      * @param text the text to analyze
      */
     public void analyzeText(String text) {
-        String[] lines = text.split("\n");
-        for (String line : lines) {
-            String[] words = line.toLowerCase().replaceAll("[^a-zA-Z ]", "").split("\\s+");
-            for (String word : words) {
+        String[] words = text.toLowerCase().replaceAll("[^a-zA-Z ]", "").split("\\s+");
+        for (String word : words) {
+            // Skip empty strings
+            if (!word.isEmpty()) {
                 wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
             }
         }
@@ -55,7 +52,7 @@ public class BookAnalyzer {
      * @return the most frequent word
      */
     public String getMostFrequentWord() {
-        return wordFrequency.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse("");
+        return wordFrequency.entrySet().stream().max(Map.Entry.comparingByValue()).map(Map.Entry::getKey).orElse("No words found");
     }
 
     /**
@@ -68,7 +65,7 @@ public class BookAnalyzer {
                 .filter(entry -> entry.getKey().length() == 7)
                 .max(Map.Entry.comparingByValue())
                 .map(Map.Entry::getKey)
-                .orElse("");
+                .orElse("No 7-character words found");
     }
 
     /**
@@ -93,19 +90,13 @@ public class BookAnalyzer {
      */
     private int getLetterScore(char letter) {
         switch (letter) {
-            case 'a': case 'i': case 'n': case 'r': case 's': case 't': case 'u': case 'e': case 'l': return 1;
-            case 'b': case 'c': case 'g': case 'p': case 'm': return 3;
-            case 'd': case 'v': case 'w': case 'f': case 'h': case 'y': return 4;
-            case 'k': return 5;
-            case 'o': return 1;
-            case 'j': return 8;
-            case 'x': return 8;
-            case 'q': return 10;
-            case 'z': return 10;
-            default: return 11;
+            case 'a': case 'e': case 'i': case 'l': case 'n': case 'o': case 'r': case 's': case 't': return 1;
+            case 'b': case 'c': case 'm': case 'p': return 3;
+            case 'd': case 'g': case 'h': case 'k': case 'q': case 'v': case 'w': case 'x': case 'y': return 4;
+            case 'j': case 'z': return 8;
+            default: return 0; // Unnecessary cases can be omitted or handled differently
         }
     }
-
 
     /**
      * Gets the count of a specific word.

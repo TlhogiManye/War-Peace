@@ -4,8 +4,8 @@ import android.content.Intent;
 import android.net.Uri;
 
 import com.example.war_peace.R;
-import com.example.war_peace.utils.FileUtils;
 import com.example.war_peace.view.MainActivity;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -19,6 +19,7 @@ import java.util.concurrent.Executors;
  */
 public class MainController {
     private static final int PICK_FILE_REQUEST = 1;
+    private static final String FILE_TYPE_TXT = "text/plain";
     private BookAnalyzer bookAnalyzer;
     private MainActivity activity;
     private ExecutorService executorService;
@@ -32,7 +33,7 @@ public class MainController {
 
     public void openFilePicker() {
         Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
-        intent.setType("*/*");
+        intent.setType(FILE_TYPE_TXT); // Only accept .txt files
         activity.startActivityForResult(intent, PICK_FILE_REQUEST);
     }
 
@@ -117,7 +118,7 @@ public class MainController {
     public void updatePerformance() {
         long endTime = System.currentTimeMillis();
         long duration = (endTime - startTime) / 1000; // Duration in seconds
-        String performance = "Time take: " + duration + " seconds";
+        String performance = "Time taken: " + duration + " seconds";
         activity.updatePerformance(performance);
     }
 

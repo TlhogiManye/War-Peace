@@ -5,77 +5,51 @@ import android.app.AlertDialog;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.war_peace.R;
 import com.example.war_peace.controllers.MainController;
 import com.example.war_peace.utils.FileUtils;
 import com.google.android.material.snackbar.Snackbar;
-import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
 public class MainActivity extends AppCompatActivity {
     private static final int PICK_FILE_REQUEST = 1;
     private MainController controller;
     private TextView resultView;
     private TextView performanceView;
-    private Button analyzeButton;
-    private Button urlAnalyzeButton;
-    private EditText urlInput;
     private ProgressBar progressBar;
-    private ExecutorService executorService;
-    private long startTime;
-
+    private Button urlAnalyzeButton;
+    private Button analyzeButton;
     private Button performanceButton;
+    private EditText urlInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        controller = new MainController(this);
+        // Initialize views
         resultView = findViewById(R.id.resultView);
         performanceView = findViewById(R.id.performanceView);
-        analyzeButton = findViewById(R.id.analyzeButton);
-        urlAnalyzeButton = findViewById(R.id.urlAnalyzeButton);
-        urlInput = findViewById(R.id.urlInput);
         progressBar = findViewById(R.id.progressBar);
-        executorService = Executors.newSingleThreadExecutor();
+        urlAnalyzeButton = findViewById(R.id.urlAnalyzeButton);
+        analyzeButton = findViewById(R.id.analyzeButton);
+        performanceButton = findViewById(R.id.performanceButton);
+        urlInput = findViewById(R.id.urlInput);
+
+        controller = new MainController(this);
 
         analyzeButton.setOnClickListener(v -> controller.openFilePicker());
-
-        urlAnalyzeButton.setOnClickListener(v -> {
-            String url = urlInput.getText().toString();
-            if (!url.isEmpty()) {
-                controller.analyzeUrl(url);
-            } else {
-                urlInput.setError("Please enter a valid URL");
-            }
-        });
-
-        performanceButton = findViewById(R.id.performanceButton);
-        performanceButton.setOnClickListener(v -> showPerformanceDialog());
-    }
-
-    private void showPerformanceDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(this);
-        LayoutInflater inflater = getLayoutInflater();
-        View dialogView = inflater.inflate(R.layout.dialog_performance, null);
-        builder.setView(dialogView);
-
-        TextView performanceContent = dialogView.findViewById(R.id.performanceContent);
-        performanceContent.setText(controller.getPerformanceText());
-
-        builder.setPositiveButton("OK", (dialog, which) -> dialog.dismiss());
-        AlertDialog dialog = builder.create();
-        dialog.show();
+        urlAnalyzeButton.setOnClickListener(v -> analyzeUrl());
+        performanceButton.setOnClickListener(v -> updatePerformance());
     }
 
     @Override
@@ -84,12 +58,17 @@ public class MainActivity extends AppCompatActivity {
         if (requestCode == PICK_FILE_REQUEST && resultCode == Activity.RESULT_OK && data != null) {
             Uri uri = data.getData();
             String filePath = FileUtils.getPath(this, uri);
-            controller.analyzeFile(filePath);
+            if (filePath != null) {
+                controller.analyzeFile(filePath);
+            } else {
+                Snackbar.make(findViewById(android.R.id.content), "Unable to get file path", Snackbar.LENGTH_LONG).show();
+
+            }
         }
     }
 
-    public void displayResults(String result) {
-        resultView.setText(result);
+    public void displayResults(String results) {
+        resultView.setText(results);
     }
 
     public void updatePerformance(String performance) {
@@ -101,10 +80,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void disableButtons(boolean disable) {
-        analyzeButton.setEnabled(!disable);
         urlAnalyzeButton.setEnabled(!disable);
-        if (disable) {
-            Snackbar.make(findViewById(android.R.id.content), "Processing, please wait...", Snackbar.LENGTH_LONG).show();
+        analyzeButton.setEnabled(!disable);
+        performanceButton.setEnabled(!disable);
+    }
+
+    private void analyzeUrl() {
+        String url = urlInput.getText().toString().trim();
+        if (!url.isEmpty()) {
+            controller.analyzeUrl(url);
+        } else {
+            Snackbar.make(findViewById(android.R.id.content), "Please enter a valid URL", Snackbar.LENGTH_LONG).show();
         }
+    }
+
+    private void updatePerformance() {
+        // Example function to handle performance button click
+        String performanceText = controller.getPerformanceText();
+        performanceView.setText(performanceText);
     }
 }
