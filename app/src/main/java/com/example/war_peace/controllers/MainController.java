@@ -22,7 +22,7 @@ public class MainController {
     private BookAnalyzer bookAnalyzer;
     private MainActivity activity;
     private ExecutorService executorService;
-    private long startTime;
+    public long startTime;
 
     public MainController(MainActivity activity) {
         this.bookAnalyzer = new BookAnalyzer();
