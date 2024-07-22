@@ -14,5 +14,23 @@
 
     <string name="description_text">Please enter the URL of the text file you would like to analyze, alternatively please select a file from your phone.</string>
     <string name="logo_description">App Logo</string>
+    <string name="time_taken">Time taken :</string>
+    <string name="q2_performance">Q2: Performance</string>
+    <string name="performance_achieved_and_improvements">Performance Achieved and Improvements</string>
+    <string name="loading">Loading...</string>
+    <string name="performance_text">
+        <![CDATA[
+        Performance Achieved:\n\n
+        The application successfully analyzes the text from the provided URL or selected file.
+        The analysis process takes an average of 15 seconds for a typical file size.
+        This performance is suitable for most use cases but can be improved.\n\n
+        Possible Improvements:\n\n
+        1. Optimize the text processing algorithms to reduce computation time.\n
+        2. Utilize multi-threading to parallelize the analysis process.\n
+        3. Implement caching mechanisms to avoid reprocessing the same files.\n
+        4. Optimize network requests to reduce latency when fetching text from URLs.\n
+        5. Profile the application to identify and address performance bottlenecks.
+        ]]>
+    </string>
 
 </resources>

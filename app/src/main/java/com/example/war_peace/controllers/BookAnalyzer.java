@@ -93,17 +93,27 @@ public class BookAnalyzer {
      */
     private int getLetterScore(char letter) {
         switch (letter) {
-            case 'e': return 1;
-            case 'a': return 2;
-            case 'r': return 3;
-            case 'i': return 4;
-            case 'o': return 5;
-            case 't': return 6;
-            case 'n': return 7;
-            case 's': return 8;
-            case 'l': return 9;
-            case 'c': return 10;
+            case 'a': case 'i': case 'n': case 'r': case 's': case 't': case 'u': case 'e': case 'l': return 1;
+            case 'b': case 'c': case 'g': case 'p': case 'm': return 3;
+            case 'd': case 'v': case 'w': case 'f': case 'h': case 'y': return 4;
+            case 'k': return 5;
+            case 'o': return 1;
+            case 'j': return 8;
+            case 'x': return 8;
+            case 'q': return 10;
+            case 'z': return 10;
             default: return 11;
         }
+    }
+
+
+    /**
+     * Gets the count of a specific word.
+     *
+     * @param word the word to count
+     * @return the count of the word
+     */
+    public int getWordCount(String word) {
+        return wordFrequency.getOrDefault(word, 0);
     }
 }
